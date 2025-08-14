@@ -25,4 +25,6 @@ const ComponentSchema = new mongoose.Schema(
   }
 );
 
-const compoentModel = mongoose.model("Component", ComponentSchema);
+const componentModel = mongoose.model("Component", ComponentSchema);
+
+module.exports = componentModel;
