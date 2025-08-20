@@ -1,7 +1,11 @@
-import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import SpotlightCard from "./SportLightCard";
 import GlowLine from "./GlowLine";
+import { useGSAP } from "@gsap/react";
+import { useRef } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import gsap from "gsap";
+gsap.registerPlugin(ScrollTrigger);
 
 const plans = [
   {
@@ -43,25 +47,92 @@ const plans = [
 ];
 
 export default function Pricing() {
+  const cardsRef = useRef([]);
+  const titleRef = useRef(null);
+  const subtitleRef = useRef(null);
+
+  useGSAP(() => {
+    const tl = gsap.timeline();
+    tl.fromTo(
+      titleRef.current,
+      { opacity: 0, x: -100 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: titleRef.current, // trigger when first card enters viewport
+          scroller: "body",
+          start: "top 100%",
+          end: "top 50%",
+          scrub: 0.5,
+        },
+      }
+    );
+    tl.fromTo(
+      subtitleRef.current,
+      { opacity: 0 },
+      {
+        opacity: 1,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: subtitleRef.current, // trigger when first card enters viewport
+          scroller: "body",
+          start: "top 100%",
+          end: "top 50%",
+          scrub: 0.5,
+        },
+      }
+    );
+    tl.fromTo(
+      cardsRef.current,
+      { opacity: 0, x: -200 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: cardsRef.current[0], // trigger when first card enters viewport
+          scroller: "body",
+          start: "top 80%", // when card is 80% down viewport
+          end: "top 50%",
+          scrub: 0.6,
+        },
+      }
+    );
+  });
+
   return (
-    <section className="relative w-full h-full mt-16 md:mt-0 pb-20 pt-10 ">
-      <GlowLine orientation="horizontal" position="0%" color="blue" />  
+    <section
+      id="pricing"
+      className="relative w-full h-full mt-16 md:mt-0 pb-20 pt-10 "
+    >
+      <GlowLine orientation="horizontal" position="0%" color="blue" />
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+        <h2
+          ref={titleRef}
+          className="text-4xl md:text-5xl font-bold text-white mb-6"
+        >
           Pricing
         </h2>
-        <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-16">
+        <p
+          ref={subtitleRef}
+          className="text-gray-300 text-lg max-w-2xl mx-auto mb-16"
+        >
           Simple, transparent plans. Start for free — upgrade when you grow.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {plans.map((plan, index) => (
             <SpotlightCard key={index}>
-              <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-                viewport={{ once: true }}
+              <div
+                ref={(el) => (cardsRef.current[index] = el)}
                 className={`p-10 rounded-3xl backdrop-blur-lg shadow-xl border ${
                   plan.highlight
                     ? "bg-gradient-to-br from-purple-600/70 to-pink-600/70 border-purple-400"
@@ -99,7 +170,7 @@ export default function Pricing() {
                 >
                   {plan.highlight ? "Get Pro" : "Get Started"}
                 </button>
-              </motion.div>
+              </div>
             </SpotlightCard>
           ))}
         </div>
