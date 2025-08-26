@@ -9,7 +9,7 @@ router.post(
   authMiddleware.auth,
   body("prompt")
     .isLength({ min: 10 })
-    .withMessage("First name must be at least 3 characters long"),
+    .withMessage("First name must be at least 10 characters long"),
   generateCompoController.generateCompController
 );
 
