@@ -5,6 +5,7 @@ module.exports.createUser = async ({
   lastname,
   email,
   password,
+  rolle,
 }) => {
   try {
     if (!firstname || !email || !password) {
@@ -17,6 +18,7 @@ module.exports.createUser = async ({
       },
       email,
       password,
+      rolle,
     });
     return user;
   } catch (error) {
