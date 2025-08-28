@@ -1,5 +1,4 @@
 const componentModel = require("../models/component.model");
-
 module.exports.addComponentService = async ({
   prompt,
   code,
@@ -17,9 +16,11 @@ module.exports.addComponentService = async ({
       userId,
       title,
     });
+
     return component;
   } catch (error) {
     console.log("components service error:", error.message);
+    throw new Error(error.message);
   }
 };
 
@@ -30,9 +31,17 @@ module.exports.deleteComponent = async ({ _id, userId }) => {
       userId,
     });
 
+    if (deletedComponent) {
+      await activityModel.create({
+        action: `Deleted component: ${deletedComponent.title}`,
+        userId,
+        prompt: deletedComponent.prompt,
+      });
+    }
+
     return deletedComponent;
   } catch (error) {
     console.log("error from delete component", error.message);
-    throw new Error({ message: error.message });
+    throw new Error(error.message);
   }
 };
