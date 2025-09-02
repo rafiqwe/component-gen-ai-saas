@@ -94,15 +94,15 @@ export default function Pricing() {
       {
         opacity: 1,
         x: 0,
-        duration: 0.8,
-        stagger: 0.2,
+        duration: 2,
+        stagger: 1,
         ease: "power3.out",
         scrollTrigger: {
           trigger: cardsRef.current[0], // trigger when first card enters viewport
           scroller: "body",
           start: "top 80%", // when card is 80% down viewport
           end: "top 50%",
-          scrub: 0.6,
+          scrub: 1,
         },
       }
     );
@@ -111,7 +111,7 @@ export default function Pricing() {
   return (
     <section
       id="pricing"
-      className="relative w-full h-full mt-16 md:mt-0 pb-20 pt-10 "
+      className="relative w-full h-full md:mt-0 pb-20 pt-10 "
     >
       <GlowLine orientation="horizontal" position="0%" color="blue" />
       <div className="max-w-6xl mx-auto text-center">

@@ -5,8 +5,15 @@ const authRoutes = require("./routes/user.route.js");
 const genRoutes = require("./routes/generate.route.js");
 const app = express();
 const componentRoute = require("./routes/components.route.js");
+const usageRoute = require("./routes/usage.route.js");
+const activityRoute = require("./routes/activity.route.js");
 
-app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
+app.use(
+  cors({
+    origin: process.env.CLIENT_URL || "http://localhost:5174/",
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -17,4 +24,6 @@ app.get("/", (req, res) => {
 app.use("/api/auth", authRoutes);
 app.use("/api/generate", genRoutes);
 app.use("/api/components", componentRoute);
+app.use("/api/usage", usageRoute);
+app.use("/api", activityRoute);
 module.exports = app;

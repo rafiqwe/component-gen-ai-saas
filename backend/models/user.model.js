@@ -26,6 +26,35 @@ const UserSchema = new mongoose.Schema(
       required: true,
       select: false,
     },
+    usageCount: {
+      type: Number,
+      default: 0,
+    },
+    usageLimit: {
+      type: Number,
+      default: 50,
+    }, // free plan = 100 per month
+    usageResetDate: {
+      type: Date,
+      default: Date.now,
+    }, // when usage resets
+    passwordChangedAt: {
+      type: Date,
+    },
+    rolle: {
+      type: String,
+      default: "Frontend Developer",
+      enum: ["Frontend Developer", "Full Stack Developer", "Backend Developer"],
+      required: true,
+    },
+    plan: {
+      type: String,
+      default: "Free",
+      enum: ["Pro", "Free", "Team"],
+    },
+    profileImage: {
+      type: Buffer,
+    },
   },
   {
     timestamps: true,
@@ -33,10 +62,7 @@ const UserSchema = new mongoose.Schema(
 );
 
 UserSchema.methods.generateAuthToken = function () {
-  const token = jwt.sign(
-    { _id: this.id, email: this.email },
-    process.env.JWT_SECRET
-  );
+  const token = jwt.sign({ _id: this.id }, process.env.JWT_SECRET);
   return token;
 };
 
