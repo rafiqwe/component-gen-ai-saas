@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import { LiveProvider, LivePreview, LiveError } from "react-live";
+import PreviewBoxIcon from "./PreviewPopUp";
 
 // --- helpers -------------------------------------------------
 export const stripESM = (src) => {
@@ -17,7 +18,8 @@ export const stripESM = (src) => {
 
 export const detectDefaultExportName = (src) => {
   let m;
-  if ((m = src.match(/export\s+default\s+function\s+([A-Z]\w*)\s*\(/))) return m[1];
+  if ((m = src.match(/export\s+default\s+function\s+([A-Z]\w*)\s*\(/)))
+    return m[1];
   if ((m = src.match(/export\s+default\s+class\s+([A-Z]\w*)\s+/))) return m[1];
   if ((m = src.match(/export\s+default\s+const\s+([A-Z]\w*)/))) return m[1];
   if ((m = src.match(/export\s+default\s+([A-Z]\w*)\s*;?/))) return m[1];
@@ -27,7 +29,10 @@ export const detectDefaultExportName = (src) => {
 export const detectComponents = (src) => {
   const names = new Set();
   for (const m of src.matchAll(/function\s+([A-Z]\w*)\s*\(/g)) names.add(m[1]);
-  for (const m of src.matchAll(/const\s+([A-Z]\w*)\s*=\s*(?:\([^)]*\)|[A-Za-z0-9_]+)\s*=>/g)) names.add(m[1]);
+  for (const m of src.matchAll(
+    /const\s+([A-Z]\w*)\s*=\s*(?:\([^)]*\)|[A-Za-z0-9_]+)\s*=>/g
+  ))
+    names.add(m[1]);
   for (const m of src.matchAll(/class\s+([A-Z]\w*)\s+/g)) names.add(m[1]);
   return Array.from(names);
 };
@@ -60,14 +65,15 @@ const PreviewBox = ({ code }) => {
   }, [code]);
 
   return (
-    <div className="flex-1 bg-gray-900 rounded-3xl shadow-2xl overflow-hidden">
+    <div className="flex-1 bg-gray-900 w-full  rounded-3xl shadow-2xl overflow-hidden">
       <div className="flex items-center justify-between px-4 md:px-5 py-3 border-b border-gray-800 bg-gray-800 mb-5">
         <span className="text-sm text-gray-300 font-medium flex items-center gap-2">
           👀 Live Preview
         </span>
+        <PreviewBoxIcon finalCode={finalCode} useNoInline={useNoInline} />
       </div>
 
-      <div className="p-4 md:p-6 h-[50vh] overflow-auto flex items-center justify-center ">
+      <div className="p-4 md:p-6 h-[50vh] w-full overflow-auto flex items-center justify-center ">
         <LiveProvider
           code={finalCode}
           // expose common hooks so users can write `useState()` etc. without imports
