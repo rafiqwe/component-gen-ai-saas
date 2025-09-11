@@ -17,7 +17,7 @@ const DashboardLayout = () => {
         <Header setSidebarOpen={setSidebarOpen} />
 
         {/* Routed page content */}
-        <main className="flex-1 p-4 mt-14 bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-200 transition-colors">
+        <main className="flex-1 p-4 relative mt-14 bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-200 transition-colors">
           <Outlet />
         </main>
       </div>

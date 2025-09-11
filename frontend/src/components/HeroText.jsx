@@ -48,12 +48,12 @@ const HeroText = () => {
         Edit in real-time. Preview instantly. Ship faster.
       </p>
       <div ref={buttonRef} className="mt-8 flex flex-wrap justify-center gap-4">
-        <Link to={'/genAi'} className="px-6 cursor-pointer py-3 rounded-2xl bg-indigo-500 hover:bg-indigo-600 text-white font-medium shadow-lg transition">
+        <Link
+          to={"/genAi"}
+          className="px-6 cursor-pointer py-3 rounded-2xl bg-indigo-500 hover:bg-indigo-600 text-white font-medium shadow-lg transition"
+        >
           Get Started
         </Link>
-        <button className="px-6 py-3 cursor-pointer rounded-2xl bg-white/10 hover:bg-white/20 border border-white/20 text-gray-200 font-medium shadow-md backdrop-blur-lg transition">
-          Live Demo
-        </button>
       </div>
     </section>
   );

@@ -4,12 +4,14 @@ import Footer from "./Footer";
 
 const MainLayOut = () => {
   return (
-    <div >
+    <div>
       <Header />
       <main>
         <Outlet />
       </main>
-      <Footer />
+      <div className="bg-black">
+        <Footer />
+      </div>
     </div>
   );
 };

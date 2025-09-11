@@ -32,8 +32,8 @@ const ProtectedWraper = ({ children }) => {
           throw new Error("Unauthorized");
         }
       } catch (err) {
-        setuser('')
-        localStorage.setItem('token', '')
+        setuser("");
+        localStorage.setItem("token", "");
         console.error("Auth error:", err.message);
         // Optionally redirect:
         navigate("/login");

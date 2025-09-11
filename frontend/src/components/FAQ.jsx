@@ -3,6 +3,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 gsap.registerPlugin(ScrollTrigger);
 
 const faqs = [
@@ -82,6 +83,7 @@ const FAQ = () => {
         scale: 1,
         duration: 0.7,
         ease: "power1.inOut",
+        stagger: 2,
         scrollTrigger: {
           trigger: ctaRef.current,
           scroller: "body",
@@ -135,9 +137,12 @@ const FAQ = () => {
             Generate, edit, and ship faster with GenAI 🚀
           </span>
         </h2>
-        <button className="px-8 cursor-pointer py-4 rounded-2xl bg-white text-indigo-700 font-semibold text-lg shadow-md hover:scale-105 transition">
+        <Link
+          to={"/genAi"}
+          className="px-8 cursor-pointer py-4 rounded-2xl bg-white text-indigo-700 font-semibold text-lg shadow-md hover:scale-105 transition"
+        >
           Start Free Trial
-        </button>
+        </Link>
       </div>
     </section>
   );
