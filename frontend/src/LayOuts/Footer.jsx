@@ -16,13 +16,19 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
         {/* Logo + About */}
         <div className="flex flex-col space-y-4">
-          <h2 className="text-2xl font-bold text-white">GenAI</h2>
+          <h2 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">
+            GenAI
+          </h2>
           <p className="text-gray-300">
             Build, edit, and ship frontend components faster with AI-powered
             code generation. Designed for developers, by developers.
           </p>
           <div className="flex space-x-4 mt-2">
-            <a href="https://github.com/rafiqwe" target="_blank" className="hover:text-white transition">
+            <a
+              href="https://github.com/rafiqwe"
+              target="_blank"
+              className="hover:text-white transition"
+            >
               <FaGithub size={20} />
             </a>
             <a
@@ -65,7 +71,7 @@ const Footer = () => {
           <p className="text-gray-300">
             Subscribe to get latest updates and news.
           </p>
-          <form className="flex flex-col sm:flex-row gap-2">
+          <div className="flex flex-col sm:flex-row gap-2">
             <input
               type="email"
               placeholder="Enter your email"
@@ -74,7 +80,7 @@ const Footer = () => {
             <button className="bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl px-4 py-2 font-semibold transition">
               Subscribe
             </button>
-          </form>
+          </div>
         </div>
       </div>
 
