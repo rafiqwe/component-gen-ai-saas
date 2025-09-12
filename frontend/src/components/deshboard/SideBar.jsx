@@ -25,9 +25,9 @@ const navItems = [
     icon: <Box size={18} />,
     link: "/genAi/my-component",
   },
-  { name: "Profile", icon: <User2 size={18} />, link: "#" },
-  { name: "Pricing", icon: <CreditCard size={18} />, link: "#" },
-  { name: "Settings", icon: <Settings size={18} />, link: "#" },
+  { name: "Profile", icon: <User2 size={18} />, link: "/genAi/profile" },
+  { name: "Pricing", icon: <CreditCard size={18} />, link: "/genAi/pricing" },
+  { name: "Settings", icon: <Settings size={18} />, link: "/genAi/setting" },
 ];
 
 const SideBar = ({ sidebarOpen, setSidebarOpen }) => {
@@ -35,7 +35,7 @@ const SideBar = ({ sidebarOpen, setSidebarOpen }) => {
 
   return (
     <div
-      className={`fixed z-20 inset-y-0 left-0 w-64 transition-all duration-300 transform
+      className={`fixed z-100 inset-y-0 left-0 w-64 transition-all duration-300 transform
         bg-gray-900/90 backdrop-blur-xl border-r border-gray-800 shadow-xl
         ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
