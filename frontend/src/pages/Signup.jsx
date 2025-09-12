@@ -61,10 +61,10 @@ const Signup = () => {
         }
         url={import.meta.env.WEBSITE_URL}
       />
-      <div className="flex h-screen bg-gray-950 text-white">
+      <div className="flex min-h-screen max-h-full bg-gray-950 text-white">
         {/* Left Side - Signup Form */}
         <div className="w-full md:w-1/2 flex items-center justify-center px-6 md:px-12">
-          <div className="max-w-md w-full bg-gradient-to-b from-gray-900 to-gray-950 p-8 rounded-2xl shadow-2xl border border-gray-800 space-y-8">
+          <div className="max-w-md w-full bg-gradient-to-b from-gray-900 to-gray-950 p-8 rounded-2xl shadow-2xl border border-gray-800 space-y-3">
             {/* Logo / Heading */}
             <div className="text-center space-y-2">
               <h1 className="text-4xl font-extrabold bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 text-transparent bg-clip-text">
@@ -79,8 +79,8 @@ const Signup = () => {
             <ErrorNotification error={error} clearError={() => setError("")} />
 
             {/* Signup Form */}
-            <form onSubmit={handleFromSubmit} className="space-y-5">
-              <div className="grid grid-cols-2 gap-4">
+            <form onSubmit={handleFromSubmit} className="space-y-5 h-[90%]">
+              <div className="grid grid-cols-2 gap-4 h-full">
                 <div>
                   <label className="block text-xs mb-1 text-gray-400">
                     First Name
