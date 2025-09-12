@@ -36,7 +36,7 @@ const Seo = ({ title, description, url, noindex = false }) => {
             "applicationCategory": "Developer Tools",
             "operatingSystem": "Web",
             "description": "GenAi helps developers generate, preview, and export React components with AI.",
-            "url":"url": "${import.meta.env.VITE_WEBSITE_URL}",
+            "url": "${import.meta.env.VITE_WEBSITE_URL}",
             "offers": {
               "@type": "Offer",
               "price": "19",
