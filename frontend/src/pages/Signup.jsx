@@ -22,7 +22,7 @@ const Signup = () => {
 
   const handleFromSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
+    setLoading(true)
 
     const userData = {
       fullname: { firstname: form.firstname, lastname: form.lastname },
