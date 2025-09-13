@@ -10,7 +10,7 @@ router.get("/activity", authMeddleware.auth, async (req, res) => {
     .find({ userId })
     .sort({ createdAt: -1 })
     .limit(5);
-  console.log(activities);
+  // console.log(activities);
 
   res.status(200).json(activities);
 });
