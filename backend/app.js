@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-  res.send("Hello from Component genat SaaS backend!");
+  res.send("Hello from Component genat SaaS backend!")
 });
 
 app.use("/api/auth", authRoutes);
