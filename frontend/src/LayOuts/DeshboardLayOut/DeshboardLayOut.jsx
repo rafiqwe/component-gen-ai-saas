@@ -14,7 +14,7 @@ const DashboardLayout = () => {
       {/* Main content */}
       <div className="flex-1 flex flex-col md:pl-64">
         {/* Topbar */}
-        <Header setSidebarOpen={setSidebarOpen} />
+        <Header setSidebarOpen={setSidebarOpen} sidebar={sidebarOpen} />
 
         {/* Routed page content */}
         <main className="flex-1 p-4 relative mt-14 bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-200 transition-colors">

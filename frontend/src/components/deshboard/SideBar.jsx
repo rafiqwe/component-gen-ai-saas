@@ -38,7 +38,7 @@ const SideBar = ({ sidebarOpen, setSidebarOpen }) => {
       className={`fixed z-100 inset-y-0 left-0 w-64 transition-all duration-300 transform
         bg-gray-900/90 backdrop-blur-xl border-r border-gray-800 shadow-xl
         ${
-          sidebarOpen ? "translate-x-0" : "-translate-x-full"
+          sidebarOpen ? "translate-x-0 " : "-translate-x-full"
         } md:translate-x-0`}
     >
       {/* Header */}
