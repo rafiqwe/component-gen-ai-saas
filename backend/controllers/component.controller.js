@@ -7,8 +7,6 @@ const componentModel = require("../models/component.model");
 
 module.exports.getComponent = async (req, res) => {
   const user = req.user.id;
-  console.log(user);
-
   const components = await componentModel
     .find({ userId: user })
     .sort({ createdAt: -1 });
