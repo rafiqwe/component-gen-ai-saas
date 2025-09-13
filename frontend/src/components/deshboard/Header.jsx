@@ -1,14 +1,16 @@
 import { Menu, Bell } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import API from "../../services/api";
+import { UserDataContext } from "../../contexts/UserContext";
 
-const Header = ({ setSidebarOpen }) => {
+const Header = ({ setSidebarOpen, sidebar }) => {
   const [previewImage, setPreviewImage] = useState();
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [activeIndex, setActiveIndex] = useState(-1); // 👈 for arrow navigation
   const navigate = useNavigate();
+  const { user } = useContext(UserDataContext);
 
   // Static suggestion list
   const allSuggestions = [
@@ -78,6 +80,7 @@ const Header = ({ setSidebarOpen }) => {
       setActiveIndex(-1);
     }
   };
+  // const fakeImgeSrc =
 
   // fetch profile image
   useEffect(() => {
@@ -105,7 +108,7 @@ const Header = ({ setSidebarOpen }) => {
       {/* Mobile Sidebar Toggle */}
       <button
         className="md:hidden p-2 rounded-lg hover:bg-gray-800 transition"
-        onClick={() => setSidebarOpen(true)}
+        onClick={() => setSidebarOpen(!sidebar)}
       >
         <Menu className="w-5 h-5 text-gray-300" />
       </button>
@@ -159,9 +162,13 @@ const Header = ({ setSidebarOpen }) => {
         </button>
 
         {/* User Avatar */}
-        <Link to={'/genAi/profile'}>
+        <Link to={"/genAi/profile"}>
           <img
-            src={previewImage ? previewImage : "https://i.pravatar.cc/40"}
+            src={
+              previewImage
+                ? previewImage
+                : `https://i.pravatar.cc/150?u=${user?.email || Math.random()}`
+            }
             alt="profile"
             className="w-9 h-9 rounded-full border-2 border-indigo-500/50 hover:scale-105 transition"
           />
