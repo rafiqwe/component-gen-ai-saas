@@ -90,6 +90,7 @@ const Signup = () => {
                     onChange={handleChange}
                     type="text"
                     name="firstname"
+                    required
                     placeholder="John"
                     className="w-full px-4 py-3 rounded-lg bg-gray-800/60 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   />
@@ -116,6 +117,7 @@ const Signup = () => {
                 <input
                   type="email"
                   value={form.email}
+                  required
                   name="email"
                   onChange={handleChange}
                   placeholder="you@example.com"
@@ -128,6 +130,7 @@ const Signup = () => {
                 <select
                   value={form.rolle}
                   name="rolle"
+                  required
                   onChange={handleChange}
                   className="w-full px-4 py-3 rounded-lg bg-gray-800/60 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 >
@@ -146,6 +149,7 @@ const Signup = () => {
                 <input
                   type="password"
                   value={form.password}
+                  required
                   name="password"
                   onChange={handleChange}
                   placeholder="••••••••"
