@@ -6,8 +6,7 @@ Built with **React (Vite), TailwindCSS, Node.js, and Express**, it provides a sm
 ---
 
 ## 📸 Preview  
-![GenAi Preview](./public/preview.png)  
- 
+![GenAi Preview](./frontend/public/images/genai.webp) 
 
 ---
 
