@@ -64,3 +64,4 @@ npm run dev
 ### 📄 License
 # MIT License © 2025 Muhammad Rabbi
 
+Ai powered component generator 
