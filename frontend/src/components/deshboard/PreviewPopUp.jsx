@@ -61,10 +61,8 @@ const PreviewBoxIcon = ({ finalCode, useNoInline }) => {
       </button>
 
       <PreviewPopup open={showPreview} onClose={() => setShowPreview(false)}>
-        {/* Render your component here */}
-        {/* Render your component here */}
         <LiveProvider code={finalCode} scope={{ React }} noInline={useNoInline}>
-          <div className="w-full min-h-full flex items-center justify-center p-4 rounded-2xl shadow-inner">
+          <div className="w-full min-h-full flex items-center justify-center p-4 rounded-2xl shadow-inner ">
             <LivePreview />
           </div>
           <LiveError className="text-red-500 mt-2 text-sm font-mono" />
