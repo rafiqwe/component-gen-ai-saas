@@ -122,7 +122,7 @@ const ProfilePage = () => {
   const avatarSrc =
     previewImage || user?.avatar || localStorage.getItem("user").profileImage;
 
-  return (
+  return (  
     <>
       <Seo
         title="Your Profile – GenAi"

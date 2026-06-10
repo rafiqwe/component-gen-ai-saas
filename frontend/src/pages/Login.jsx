@@ -12,7 +12,7 @@ export default function Login() {
   const [error, setError] = useState("");
   const { setuser } = useContext(UserDataContext);
   const [loading, setLoading] = useState(false);
-  const navigete = useNavigate();
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     setLoading(true);
@@ -30,7 +30,7 @@ export default function Login() {
         localStorage.setItem("user", data.user);
         setLoading(false);
         setuser(data.user);
-        navigete("/genAi");
+        navigate("/genAi");
       }
     } catch (error) {
       setLoading(false);
