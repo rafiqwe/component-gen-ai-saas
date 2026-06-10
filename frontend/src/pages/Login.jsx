@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import API from "../services/api";
 import { UserDataContext } from "../contexts/UserContext";
 import { ErrorNotification } from "../components/ErrorNotification";
-import { Helmet } from "react-helmet-async";
 import Seo from "../components/Seo";
 
 export default function Login() {
@@ -13,7 +12,8 @@ export default function Login() {
   const [error, setError] = useState("");
   const { setuser } = useContext(UserDataContext);
   const [loading, setLoading] = useState(false);
-  const navigete = useNavigate();
+  const navigate = useNavigate();
+
   const handleLogin = async (e) => {
     setLoading(true);
     e.preventDefault();
@@ -30,10 +30,10 @@ export default function Login() {
         localStorage.setItem("user", data.user);
         setLoading(false);
         setuser(data.user);
-        navigete("/genAi");
+        navigate("/genAi");
       }
     } catch (error) {
-      console.log("login error:", error);
+      setLoading(false);
       setError(error.response.data.message || error.message || "Network Error");
     }
   };

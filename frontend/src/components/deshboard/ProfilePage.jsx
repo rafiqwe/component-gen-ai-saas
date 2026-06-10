@@ -108,23 +108,21 @@ const ProfilePage = () => {
       } catch (error) {
         console.error(
           "Update image error:",
-          error.response?.data || error.message
+          error.response?.data || error.message,
         );
         toast.error(
           `❌ Failed to update: ${
             error.response?.data?.message || error.message || "Network error"
-          }`
+          }`,
         );
       }
     }
   };
 
   const avatarSrc =
-    previewImage ||
-    user?.avatar ||
-    `https://i.pravatar.cc/150?u=${user?.email || Math.random()}`;
+    previewImage || user?.avatar || localStorage.getItem("user").profileImage;
 
-  return (
+  return (  
     <>
       <Seo
         title="Your Profile – GenAi"
